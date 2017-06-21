@@ -1,0 +1,11 @@
+li
+{margin:  5px 0px  5px 0px; }
+table
+{background-color: #e3e3e3; border-color: black}
+
+.AddedInfoInContent
+{border: 1px solid #888888; color:#000000;}
+.code_pre   { margin: 10px 0px 30px 0px; padding: 8px; border: 1px solid #888888; color:#000000; background-color: #FFFFFF; }
+.note       { font-style: italic; color: #666666; }
+.anote1     { color: #FF0000; text-align:right; width:30px; padding-right:10px; }
+.anote2     { color: #666666; font-family:돋움; }
