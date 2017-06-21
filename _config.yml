@@ -21,7 +21,7 @@ footer-links:
   flickr:
   github: keispace
   instagram:
-  linkedin:
+  linkedin:young-evan-kim-262600143
   pinterest:
   rss: # just type anything here for a working RSS icon
   twitter: 
@@ -45,7 +45,7 @@ url:
 # (http://yourusername.github.io/repository-name)
 # and NOT your User repository (http://yourusername.github.io)
 # then add in the baseurl here, like this: "/repository-name"
-baseurl: "/keispace.github.io"
+baseurl: "/blog"
 
 #
 # !! You don't need to change any of the configuration flags below !!
