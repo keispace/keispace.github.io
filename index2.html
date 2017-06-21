@@ -1,18 +1,28 @@
 ---
 layout: default
 ---
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<TITLE>keispace.github.com</TITLE>
+<script language="javascript"  src="./src/keispaceJs/keispace.js"></script>
+</HEAD>
+<BODY>
+<table border="0" width="585">
+    <tr>
+        <td valign="top" >
 
-<div class="posts">
-  {% for post in site.posts %}
-    <article class="post">
+            <div class="AddedInfoInContent">
+            Menu
+                <UL style="MARGIN: 10px 5px 5px 25px">
+                    <LI style="MARGIN: 4px 0px 3px"><a href="http://keispace.egloos.com/">Blog(egloos. korean)</a></b>
+                    <LI style="MARGIN: 4px 0px 3px"><a href="http://keispace.github.com">Blog(github.)</a></b>
+                    <LI style="MARGIN: 4px 0px 3px"><a href="http://keispace.github.com/test.html">JS demo</a></b>
+                </UL>
+            </div>
+        </td>
+    </tr>
+</table>
 
-      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
-
-      <div class="entry">
-        {{ post.excerpt }}
-      </div>
-
-      <a href="{{ site.baseurl }}{{ post.url }}" class="button button-primary">Read More</a>
-    </article>
-  {% endfor %}
-</div>
+</BODY>
+</HTML>
