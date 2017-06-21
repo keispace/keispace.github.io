@@ -17,6 +17,7 @@ permalink: /projects/
 - use python at work 
 - studying Xamarin(.Form)
 - studying Javascript
+
 ***
 
 ## PAST
