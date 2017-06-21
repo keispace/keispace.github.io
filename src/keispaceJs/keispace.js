@@ -1,6 +1,40 @@
 (function (window){
     var keispace = {};
 
+//function에 prototype 안쓰고 걍 method로 우회.
+Function.prototype.method = function(name, func){
+    if(!this.prototype[name]){
+    this.prototype[name] = func;
+    return this;
+    }
+};
+
+Function.method('curry',function(){
+    var slice = Array.prototype.slice,
+        args = slice.apply(arguments), 
+        that = this;
+    return function(){
+        return that.apply(null,args.concat( slice.apply(arguments)));
+    };
+});
+
+//string.trim();
+String.method('trim',function(){
+    return this.replace(/^\s+|\s+$/g,'');
+});
+
+//get integer from number
+Number.method('integer',function(){
+    return Math[this<0?'ceiling' : 'floor'](this);
+});
+
+if (typeof Object.create !== 'function'){
+    Object.create = function(o){
+        var F = function(){};
+        F.prototype = o;
+        return new F();
+    };
+}
 
 //pointing function(method reference)
 keispace.Delegate = {};
@@ -67,10 +101,10 @@ keispace.DTOFactory.Create = function(){
 OnLoadCallBack = keispace.Delegate.Create(this, keispace.PageLifeCycle.OnLoadHandler);
 OnUnLoadCallBack = keispace.Delegate.Create(this, keispace.PageLifeCycle.OnUnLoadHandler);
 
-//$ = keispace.Delegate.Create(this, keispace.DOM.$);
-$ =  function(elementId){
-            return document.getElementById(elementId);
-        }
+$ = keispace.Delegate.Create(this, keispace.DOM.$);
+//$ =  function(elementId){
+//            return document.getElementById(elementId);
+//        }
 
 $s = keispace.Delegate.Create(this, keispace.DOM.$s);
 
@@ -87,40 +121,22 @@ keispace.Pending.setPending = function(){
         clearInterval(keispace.Pending.pendingInterval);
         keispace.Pending.pendingInterval=false;
     }
-}
+};
 keispace.Pending.startPending = function (){
-    var div = $("pending");
+    let div = $("pending");
     if (div.innerHTML.length > 12) { div.innerHTML = "Pending"; } div.innerHTML += ".";
-}
+};
 
 
-
-
-keispace.Pending.setPending3 = function () { 
-    var pendingInterval = false, div = $("pending3"); // #1 
-    function startPending() { // #2 
-        if (div.innerHTML.length > 13) { 
-         div.innerHTML = "Pending3"; 
-         } 
-     div.innerHTML += "."; 
-    }; 
-    setPending3 = function () { // #3 
-        if (!pendingInterval) { 
-            pendingInterval = setInterval(startPending, 500); 
-        } else { 
-            clearInterval(pendingInterval); 
-            pendingInterval = false;
-            } 
-         }; 
-         setPending3(); 
-     };
-
-
-
-
-
-
-
+keispace.setTest = function(obj,text){
+     console.log(obj);
+    if (obj.value){
+       console.log("has value");
+        obj.value = text ;
+    }else{
+      obj.innerHTML = text ;
+    };
+};
 
 
 (function(){

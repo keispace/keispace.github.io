@@ -69,8 +69,17 @@
 <button onclick="keispace.Pending.setPending();">Toggle Pending</button> 
 <div id="pending">Pending</div>
 <br>
-<button onclick="keispace.Pending.setPending3();">Toggle Pending</button> 
+<button onclick="setPending3();">Toggle Pending</button> 
 <div id="pending3">Pending</div>
+
+<br/>
+<br/>
+<div onclick="test();" >click me</div>
+<div id="test" value="d"></div> -->
+<input type="text" id="test" value="값" disabled="disabled" readonly="readonly" />
+
+
+
 
 
 
@@ -160,7 +169,16 @@ function FormCheck()
 
     }
 }
+var setPending3 =function () { var pendingInterval = false, div = document.getElementById("pending3"); function startPending() {  if (div.innerHTML.length > 13) { div.innerHTML = "Pending"; } div.innerHTML += "."; }; setPending3 = function () {if (!pendingInterval) { pendingInterval = setInterval(startPending, 500); } else { clearInterval(pendingInterval); pendingInterval = false; } }; setPending3(); };
+var add = (a,b)=>{return a+b;}
 
+function test(){
+   //keispace.setTest($("test"), " 테스트 ".repeat(3).trim());
+//$("test").innerHTML = "테스트 ".repeat(3);
+var add1 = add.curry(1);
+$("test").innerHTML = add1(6);
+
+}
 </script>
-</BODY>
+</BODY> 
 </HTML>
