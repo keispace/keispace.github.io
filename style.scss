@@ -113,6 +113,10 @@ img {
   max-width: 100%;
 }
 
+td {
+  border : 1;
+}
+
 // Fixes images in popup boxes from Google Translate
 .gmnoprint img {
   max-width: none;
@@ -129,8 +133,8 @@ img {
   background: $lightGray;
 }
 ::selection {
-  color: $black;
-  background: $lightGray;
+  color: $lightGray;
+  background: $black;
 }
 
 .clearfix:before,
