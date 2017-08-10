@@ -113,7 +113,8 @@ img {
   max-width: 100%;
 }
 
-td {
+table {
+  border-collapse:collapse;
   border : 1;
 }
 
@@ -129,8 +130,8 @@ td {
 
 // Specify the color of the selection
 ::-moz-selection {
-  color: $black;
-  background: $lightGray;
+  color: $lightGray;
+  background: $black;
 }
 ::selection {
   color: $lightGray;
