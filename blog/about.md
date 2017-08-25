@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About
-permalink: /about/
+permalink: /blog/about/
 ---
 
 아직 빈공간...
