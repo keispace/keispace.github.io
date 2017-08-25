@@ -1,0 +1,137 @@
+---
+layout: post
+title:방화벽 예외 등록하기(C#)
+author: keispace
+category: Dev
+tags: [c#,firewall]
+---
+
+category: Dev  
+tags: [c#,firewall]
+reference site :  
+http://crystalcube.co.kr/12  
+
+# 개요 
+cmd 프로세서를 이용해서 netsh 명령으로 간단하게 처리하는 방법.  
+xp부터 적용 가능한 것 같고, win7이후부터 작업이 추가된다.  
+
+# 소스
+
+```html 
+
+<div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tbody><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+  32
+  33
+  34
+  35
+  36
+  37
+  38
+  39
+  40
+  41
+  42
+  43
+  44
+  45
+  46
+  47
+  48
+  49
+  50
+  51
+  52
+  53
+  54
+  55
+  56</pre></td><td><pre style="margin: 0; line-height: 125%">    <span style="color: #75715e">/// &lt;summary&gt;</span>
+      <span style="color: #75715e">///  방화벽 예외 추가(xp~)</span>
+      <span style="color: #75715e">/// &lt;/summary&gt;</span>
+      <span style="color: #75715e">/// &lt;refer&gt;http://crystalcube.co.kr/12&lt;/refer&gt;</span>
+      <span style="color: #66d9ef">public</span> <span style="color: #66d9ef">static</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">Fwall</span>
+      <span style="color: #f8f8f2">{</span>
+          <span style="color: #66d9ef">private</span> <span style="color: #66d9ef">static</span> <span style="color: #66d9ef">readonly</span> <span style="color: #66d9ef">string</span> <span style="color: #f8f8f2">FirewallCmd</span> <span style="color: #f8f8f2">=</span> <span style="color: #e6db74">"netsh firewall add allowedprogram \"{1}\" \"{0}\" ENABLE"</span><span style="color: #f8f8f2">;</span>
+          <span style="color: #66d9ef">private</span> <span style="color: #66d9ef">static</span> <span style="color: #66d9ef">readonly</span> <span style="color: #66d9ef">string</span> <span style="color: #f8f8f2">AdvanceFirewallCmd</span> <span style="color: #f8f8f2">=</span> <span style="color: #e6db74">"netsh advfirewall firewall add rule name=\"{0}\" dir=in action=allow program=\"{1}\" enable=yes"</span><span style="color: #f8f8f2">;</span>
+          <span style="color: #66d9ef">private</span> <span style="color: #66d9ef">static</span> <span style="color: #66d9ef">readonly</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">VistaMajorVersion</span> <span style="color: #f8f8f2">=</span> <span style="color: #ae81ff">6</span><span style="color: #f8f8f2">;</span>
+          <span style="color: #75715e">/// &lt;summary&gt;</span>
+          <span style="color: #75715e">/// 방화벽 등록 </span>
+          <span style="color: #75715e">/// &lt;/summary&gt;</span>
+          <span style="color: #75715e">/// &lt;param name="name"&gt;등록할 product name &lt;/param&gt;</span>
+          <span style="color: #75715e">/// &lt;param name="programFullPath"&gt;실행 경로&lt;/param&gt;</span>
+          <span style="color: #75715e">/// &lt;returns&gt;작업 성공 여부 &lt;/returns&gt;</span>
+          <span style="color: #66d9ef">public</span> <span style="color: #66d9ef">static</span> <span style="color: #66d9ef">bool</span> <span style="color: #a6e22e">AuthorizeProgram</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">string</span> <span style="color: #f8f8f2">name,</span> <span style="color: #66d9ef">string</span> <span style="color: #f8f8f2">programFullPath)</span>
+          <span style="color: #f8f8f2">{</span>
+              <span style="color: #66d9ef">try</span>
+              <span style="color: #f8f8f2">{</span> <span style="color: #75715e">// OS version check</span>
+                  <span style="color: #66d9ef">string</span> <span style="color: #f8f8f2">strFormat</span> <span style="color: #f8f8f2">=</span> <span style="color: #f8f8f2">Fwall.FirewallCmd;</span>
+                  <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">(System.Environment.OSVersion.Version.Major</span> <span style="color: #f8f8f2">&gt;=</span> <span style="color: #f8f8f2">Fwall.VistaMajorVersion)</span>
+                  <span style="color: #f8f8f2">{</span>
+                      <span style="color: #f8f8f2">strFormat</span> <span style="color: #f8f8f2">=</span> <span style="color: #f8f8f2">Fwall.AdvanceFirewallCmd;</span>
+                  <span style="color: #f8f8f2">}</span>
+
+                  <span style="color: #75715e">// Start to register </span>
+                  <span style="color: #66d9ef">string</span> <span style="color: #f8f8f2">command</span> <span style="color: #f8f8f2">=</span> <span style="color: #f8f8f2">String.Format(strFormat,</span> <span style="color: #f8f8f2">name,</span> <span style="color: #f8f8f2">programFullPath);</span>
+                  <span style="color: #f8f8f2">System.Console.WriteLine(command);</span>
+
+                  <span style="color: #f8f8f2">ProcessStartInfo</span> <span style="color: #f8f8f2">startInfo</span> <span style="color: #f8f8f2">=</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">ProcessStartInfo();</span>
+                  <span style="color: #f8f8f2">startInfo.CreateNoWindow</span> <span style="color: #f8f8f2">=</span> <span style="color: #66d9ef">true</span><span style="color: #f8f8f2">;</span>
+                  <span style="color: #f8f8f2">startInfo.FileName</span> <span style="color: #f8f8f2">=</span> <span style="color: #e6db74">"cmd.exe"</span><span style="color: #f8f8f2">;</span>
+                  <span style="color: #f8f8f2">startInfo.UseShellExecute</span> <span style="color: #f8f8f2">=</span> <span style="color: #66d9ef">false</span><span style="color: #f8f8f2">;</span>
+                  <span style="color: #f8f8f2">startInfo.RedirectStandardInput</span> <span style="color: #f8f8f2">=</span> <span style="color: #66d9ef">true</span><span style="color: #f8f8f2">;</span>
+                  <span style="color: #f8f8f2">startInfo.RedirectStandardOutput</span> <span style="color: #f8f8f2">=</span> <span style="color: #66d9ef">true</span><span style="color: #f8f8f2">;</span>
+                  <span style="color: #f8f8f2">startInfo.RedirectStandardError</span> <span style="color: #f8f8f2">=</span> <span style="color: #66d9ef">true</span><span style="color: #f8f8f2">;</span>
+
+                  <span style="color: #f8f8f2">Process</span> <span style="color: #f8f8f2">process</span> <span style="color: #f8f8f2">=</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">Process();</span>
+                  <span style="color: #f8f8f2">process.EnableRaisingEvents</span> <span style="color: #f8f8f2">=</span> <span style="color: #66d9ef">false</span><span style="color: #f8f8f2">;</span>
+                  <span style="color: #f8f8f2">process.StartInfo</span> <span style="color: #f8f8f2">=</span> <span style="color: #f8f8f2">startInfo;</span>
+                  <span style="color: #f8f8f2">process.Start();</span>
+                  <span style="color: #f8f8f2">process.StandardInput.Write(command</span> <span style="color: #f8f8f2">+</span> <span style="color: #f8f8f2">Environment.NewLine);</span>
+                  <span style="color: #f8f8f2">process.StandardInput.Close();</span>
+                  <span style="color: #66d9ef">string</span> <span style="color: #f8f8f2">result</span> <span style="color: #f8f8f2">=</span> <span style="color: #f8f8f2">process.StandardOutput.ReadToEnd();</span>
+                  <span style="color: #66d9ef">string</span> <span style="color: #f8f8f2">error</span> <span style="color: #f8f8f2">=</span> <span style="color: #f8f8f2">process.StandardError.ReadToEnd();</span>
+                  <span style="color: #f8f8f2">process.WaitForExit();</span>
+                  <span style="color: #f8f8f2">process.Close();</span>
+              <span style="color: #f8f8f2">}</span>
+              <span style="color: #66d9ef">catch</span>
+              <span style="color: #f8f8f2">{</span>
+                  <span style="color: #66d9ef">return</span> <span style="color: #66d9ef">false</span><span style="color: #f8f8f2">;</span>
+              <span style="color: #f8f8f2">}</span>
+              <span style="color: #66d9ef">return</span> <span style="color: #66d9ef">true</span><span style="color: #f8f8f2">;</span>
+          <span style="color: #f8f8f2">}</span>
+
+      <span style="color: #f8f8f2">}</span>
+  </pre><pre style="margin: 0; line-height: 125%"><span style="color: #f8f8f2">
+  </span></pre><pre style="margin: 0; line-height: 125%"><span style="color: #f8f8f2">
+  </span></pre><pre style="margin: 0; line-height: 125%"><span style="color: #f8f8f2">
+  </span></pre></td></tr></tbody></table></div>
+  ```
