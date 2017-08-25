@@ -17,7 +17,6 @@ xp부터 적용 가능한 것 같고, win7이후부터 작업이 추가된다.
 
 # 소스
 
-```html 
 
 <div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tbody><tr><td><pre style="margin: 0; line-height: 125%"> 1
  2
@@ -134,4 +133,4 @@ xp부터 적용 가능한 것 같고, win7이후부터 작업이 추가된다.
   </span></pre><pre style="margin: 0; line-height: 125%"><span style="color: #f8f8f2">
   </span></pre><pre style="margin: 0; line-height: 125%"><span style="color: #f8f8f2">
   </span></pre></td></tr></tbody></table></div>
-  ```
+  
