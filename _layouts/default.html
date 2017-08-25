@@ -60,13 +60,8 @@
             </ul>
         </div>
              
-             <div class="space-medium"></div>
-            
-        </div>
-    </div>
-
-  <div class="tags-expo-list">
-     {% for tag in site.tags %}
+             <div class="space-medium">
+   {% for tag in site.tags %}
     <h2 id="{{ tag | slugify }}">{{ tag }}</h2>
     <ul>
      {% for post in site.posts %}
@@ -87,6 +82,13 @@
     </ul>
   {% endfor %}
   </div>
+            
+        </div>
+    </div>
+
+ 
+    
+ 
 
     <div id="main" role="main" class="container">
       {{ content }}
