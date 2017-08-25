@@ -72,7 +72,11 @@ The purpose of this snippet is to list all the tags you have in your site.
 {% for tag in site.tags %}
   <a href="#{{ tag | slugify }}"> {{ tag }} </a>
 {% endfor %}
-
+  <div class="tags-expo-list">
+    {% for tag in site.tags %}
+    <a href="#{{ tag[0] | slugify }}" class="post-tag">{{ tag[0] }}</a>
+    {% endfor %}
+  </div>
 
 
 {% comment %}
