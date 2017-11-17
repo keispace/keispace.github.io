@@ -21,6 +21,22 @@
     
     <div class="intro-header">    
       <div class="container">
+        <header class="masthead clearfix">
+             <div class="site-info">
+               <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
+               <p class="site-description">{{ site.description }}</p>
+             </div>
+             <nav>
+               <a href="{{ site.baseurl }}/">Blog</a>
+               <a href="http://keispace.egloos.com/" target="_blank">Egloos Blog</a>
+               <a href="{{ site.baseurl }}/blog/about">About</a>
+               <a href="{{ site.baseurl }}/blog/projects">Projects</a>
+               <a href="{{ site.baseurl }}/blog/categories">Categories</a>
+               <a href="{{ site.baseurl }}/blog/tag">Tag</a>
+
+             </nav>
+           </header>
+        
         <div class="post-heading">
             <h1>{{page.title}}</h1>
             <span class="meta">Posted by <a href="{{ site.baseurl }}/"> {{page.author}}
