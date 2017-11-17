@@ -1,8 +1,12 @@
 ---
 layout: default
 ---
- <div class="tags-expo-section">
-  공지사항
+
+
+
+
+<div class="posts">
+   공지사항
     {% for tag in site.tags %}
     {% if tag[0] =="공지" %}
     <h2 id="{{ tag[0] | slugify }}">{{ tag[0] }}</h2>
@@ -18,9 +22,7 @@ layout: default
     </ul>
     {% endif %}
     {% endfor %}
-  </div>
-
-<div class="posts">
+ 
   {% for post in site.posts %}
     <article class="post">
 
