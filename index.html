@@ -6,22 +6,22 @@ layout: default
 
 
 <div class="posts">
-   공지사항
-    {% for tag in site.tags %}
+<!--공지 태그 -> 공지사항으로 올림. -->
+   {% for tag in site.tags %}
     {% if tag[0] =="공지" %}
-    <h2 id="{{ tag[0] | slugify }}">{{ tag[0] }}</h2>
+    <h1 id="{{ tag[0] | slugify }}">{{ tag[0] }}</h2>
     <ul class="tags-expo-posts">
       {% for post in tag[1] %}
         <a class="post-title" href="{{ site.baseurl }}{{ post.url }}">
       <li>
         {{ post.title }}
-      <small class="post-date">{{ post.date | date_to_string }}</small>
       </li>
       </a>
       {% endfor %}
     </ul>
     {% endif %}
     {% endfor %}
+   
  
   {% for post in site.posts %}
     <article class="post">
