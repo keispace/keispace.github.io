@@ -22,7 +22,7 @@ tags: [AWS, CodeSuite, CodePipeline, CodeBuild, CodeCommit, CodeDeploy]
 ## [CodeSuite](https://ap-northeast-2.console.aws.amazon.com/codesuite/)
 기록하기 앞서 간단하게 말하자면 일단 저 자잘한 각각의 서비스는 모두 동일한 업무에서 순서대로 사용되는 흐름을 가지고 있고 이를 AWS에서는 CodeSuite라고 명명하여 한번에 관리한다.(관리 콘솔 내에 나머지 4개가 서브메뉴로 구성됨)  
 
-![CS메뉴](../images/2019-04-23-AWS_CodeSuite삽질/cs_0.PNG)
+![CS메뉴](../images/2019-04-23-AWS_CodeSuite삽질/CS_0.PNG)
 
 ##  CodeCommit
 CodeCommit은 git 기반 비공개 저장소이다. 물론 지금은 github도 프라이빗을 무료제공하기 시작하긴 했다만 일단 AWS에서 직접 관리하는 서비스다보니 CS 내 다른 서비스에 모두 호환하는데 아무런 고려를 하지 않아도 자연스럽게 되는 장점이 있으나....  
