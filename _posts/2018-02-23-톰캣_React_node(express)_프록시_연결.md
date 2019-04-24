@@ -10,7 +10,7 @@ category: Dev-Web
 tags: [tomcat, React, create-react-app, express, Nodejs, proxy, Apache, ReverseProxy]
 
 
-올해부터 무인 키오스크에서 웹개발로 팀 이동을 했지만 둘다 작업해야하는 몰지가한 상황입니다만..  
+올해부터 무인 키오스크에서 웹개발로 팀 이동을 했지만 둘다 작업해야하는 몰지각한 상황입니다만..  
 사이트 관리? 서버관리? 쪽 이슈라서 간만에 블로깅.
 
 대충 상황을 설명하자면  
@@ -18,7 +18,7 @@ tags: [tomcat, React, create-react-app, express, Nodejs, proxy, Apache, ReverseP
 서버는 Aws 에서 DEV, WAS, WEB 3가지 ec2인스턴스를 사용중인데  
 이번에 토이 프로젝트로 만든 브랜드 홍보페이지(react)를 시험삼아 운영에 올려보기로 했다. 
 
-심지어 기존 www.domain 을 이번 브랜드 페이지로 변경하고 기존 관리자 사이트는 sub.domain으로 변경...
+심지어 기존 www sub domain 을 이번 브랜드 페이지로 변경하고 기존 관리자 사이트는 별도의 sub domain으로 변경...
 
 
 기존의 구조는  
