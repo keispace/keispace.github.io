@@ -2,12 +2,12 @@
 layout: post
 title: d750용 콜럼버스 GPS 리뷰
 author: keispace
-category: review
-tags: [리뷰, 니콘 D750, 콜럼버스GPS]
+category: Review
+tags: [Review,리뷰, 니콘 D750, 콜럼버스GPS]
 ---
 
-category: review
-tags: [리뷰, 니콘 D750, 콜럼버스GPS]
+category: Review
+tags: [Review, 리뷰, 니콘 D750, 콜럼버스GPS]
 
 *\*이미지 로딩이 좀 심하게 걸려 모든 이미지는 640사이즈로 리사이징 됬습니다.*
 
